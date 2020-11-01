@@ -1,0 +1,13 @@
+Consulter une oeuvre:
+
+alt L'utilisateur a cliquer sur une oeuvre
+Utilisateur->+Serveur: Clic sur une oeuvre
+Serveur->+Serveur: Récupération des données de l'oeuvre
+deactivate Serveur
+Serveur-->>Utilisateur: Affichage des détails de l'oeuvre
+deactivate Serveur
+else L'utilisateur a saisie une oeuvre dans la recherche
+Utilisateur->+Serveur: Envoie de la saisie
+Serveur->+Serveur: Récupération des données de l'oeuvre \n correspondants à la saisie
+deactivate Serveur
+Serveur-->>Utilisateur: Affichage des détails de l'oeuvre
