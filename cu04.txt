@@ -1,5 +1,10 @@
-Utilisateur->+Serveur: clique sur le nom d'un utilisateur\nsur la fiche d'une oeuvre
-Serveur->+Serveur: récuperation des informations\nde l'utilisateur ciblé
+Utilisateur->+Serveur: saisit un mot dans la barre\nde recherche des utilisateurs
+Serveur->+Serveur: récuperation d'une liste d'utilisateurs avec\nun préfixe commun avec ce mot
 deactivate Serveur
-Serveur-->Utilisateur: affichage du profil de l'utilisateur
+Serveur-->Utilisateur: affichage du résultat de la recherche
+deactivate Serveur
+Utilisateur->+Serveur: clique sur le nom d'un utilisateur\nissu du résultat de la recherche
+Serveur->+Serveur: récuperation des données\nde l'utilisateur ciblé
+deactivate Serveur
+Serveur-->Utilisateur: affiche la page de l'utilisateur ciblé
 deactivate Serveur
