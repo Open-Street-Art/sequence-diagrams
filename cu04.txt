@@ -1,0 +1,5 @@
+Utilisateur->+Serveur: clique sur le nom d'un utilisateur\nsur la fiche d'une oeuvre
+Serveur->+Serveur: récuperation des informations\nde l'utilisateur ciblé
+deactivate Serveur
+Serveur-->Utilisateur: affichage du profil de l'utilisateur
+deactivate Serveur
