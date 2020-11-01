@@ -1,0 +1,15 @@
+Utilisateur->+Serveur: clique sur l'édition des informations du profil
+Serveur->+Serveur: récuperation des informations à afficher
+deactivate Serveur
+Serveur-->Utilisateur: affichage de la page d'édition\ndes informations
+deactivate Serveur
+Utilisateur->+Utilisateur: complétion du formulaire
+deactivate Utilisateur
+Utilisateur->+Serveur: validation des données entrées
+alt les données sont correctes
+    Serveur->+Serveur: modification des données en base de données
+    deactivate Serveur
+    Serveur-->Utilisateur: affichage du profil avec les\nnouvelles modifications
+else les données sont incorrectes
+    Serveur-->Utilisateur: réponse indiquant la raison\nde l'échec de l'authentification
+deactivate Serveur
