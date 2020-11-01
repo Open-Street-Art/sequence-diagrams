@@ -1,0 +1,19 @@
+loop tant que l'utilisateur ne valide pas sa saisie
+    Utilisateur->Serveur: envoie de la nouvelle saisie
+    Serveur->Serveur: recherche des résultats compatible\navec la saisie envoyée
+    Serveur->Utilisateur: réponse de l'autocomplétion
+    Utilisateur->Utilisateur: affichage de l'autocomplétion
+end
+Utilisateur->Serveur: validation et traitement de la saisie
+Serveur->Fournisseur de points GPS: vérification de l'existence d'une ville\ncompatible avec la saisie
+alt Une ville correspond à la saisie
+    Fournisseur de points GPS->Serveur: réponse contenant les coordonnées GPS de la ville
+else Aucune ville ne correspond à la saisie
+    Fournisseur de points GPS->Serveur: réponse vide
+end
+alt Le résultat est une oeuvre
+Serveur->Utilisateur: affichage de la localisation et\ndes informations de l'oeuvre
+else Le résultat est un artiste
+Serveur->Utilisateur: affichage des informations de l'artiste\navec les localisations de ses oeuvres
+else Le résultat est une ville
+Serveur->Utilisateur: affichage des informations de la ville\navec les localisation des oeuvres de cette ville
