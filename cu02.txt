@@ -1,0 +1,13 @@
+Utilisateur->+Serveur: clique sur le bouton de connexion
+Serveur->+Serveur: récuperation des informations à afficher
+deactivate Serveur
+Serveur-->Utilisateur: affichage du formulaire de connexion
+deactivate Serveur
+Utilisateur->+Utilisateur: complétion du formulaire
+deactivate Utilisateur
+Utilisateur->+Serveur: validation du formulaire
+alt Connexion réussie
+Serveur-->Utilisateur: authentification
+else Connexion échouée
+Serveur-->Utilisateur: réponse indiquant la raison\nde l'échec de l'authentification
+deactivate Serveur
