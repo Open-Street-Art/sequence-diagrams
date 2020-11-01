@@ -1,13 +1,31 @@
-Consulter une oeuvre:
+Proposer une oeuvre:
 
-alt L'utilisateur a cliquer sur une oeuvre
-Utilisateur->+Serveur: Clic sur une oeuvre
-Serveur->+Serveur: Récupération des données de l'oeuvre
+alt L'utilisateur propose l'ajout d'une oeuvre
+Utilisateur->+Serveur: Clique sur proposer une oeuvre
+Serveur-->Utilisateur: Affichage du formulaire d'ajout d'une oeuvre
 deactivate Serveur
-Serveur-->>Utilisateur: Affichage des détails de l'oeuvre
+Utilisateur->+Utilisateur: Remplissage du formulaire
+deactivate Utilisateur
+Utilisateur->+Serveur: Valide la propostion d'ajout
+alt Données correctes
+Serveur->+Serveur: Proposition enregistrée
 deactivate Serveur
-else L'utilisateur a saisie une oeuvre dans la recherche
-Utilisateur->+Serveur: Envoie de la saisie
-Serveur->+Serveur: Récupération des données de l'oeuvre \n correspondants à la saisie
+Serveur-->Utilisateur: Message indiquant que la propostion est prise en compte
+else Donnéees incorrectes
+Serveur-->Utilisateur: Message indiquant que les données ne sont pas valide
 deactivate Serveur
-Serveur-->>Utilisateur: Affichage des détails de l'oeuvre
+end alt
+else L'utilisateur propose la modification d'une oeuvre
+Utilisateur->+Serveur: Clique sur proposer une modification
+Serveur-->Utilisateur: Affichage du formulaire de modification \n pré-rempli avec les information de l'oeuvre
+deactivate Serveur
+Utilisateur->+Utilisateur: Remplissage du formulaire
+deactivate Utilisateur
+Utilisateur->+Serveur: Valide la propostion de modification
+alt Données correctes
+Serveur->+Serveur: Proposition de modification enregistrée
+deactivate Serveur
+Serveur-->Utilisateur: Message indiquant que la propostion est prise en compte
+else Donnéees incorrectes
+Serveur-->Utilisateur: Message indiquant que les données ne sont pas valide
+deactivate Serveur
