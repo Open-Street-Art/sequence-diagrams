@@ -1,0 +1,15 @@
+Visiteur->+Serveur: clique sur le bouton d'inscription
+Serveur->+Serveur: récuperation des informations à afficher
+deactivate Serveur
+Serveur-->Visiteur: affichage de la page d'inscription
+deactivate Serveur
+Visiteur->+Visiteur: complétion du formulaire
+deactivate Visiteur
+Visiteur->+Serveur: validation des données entréees
+alt Inscription réussie
+Serveur->+Serveur: création du compte
+deactivate Serveur
+Serveur-->Visiteur: réponse indiquant la création du compte
+else Inscription échouée
+Serveur-->Visiteur: réponse indiquant l'échec de la\ncréation du compte avec la raison
+deactivate Serveur
