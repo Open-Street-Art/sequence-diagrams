@@ -3,6 +3,30 @@ Serveur->+Serveur: récuperation des informations à afficher
 deactivate Serveur
 Serveur-->Utilisateur: affichage du formulaire de connexion
 deactivate Serveur
+loop Tant que l'utilisateur souhaite réinitialiser son mot de passe
+Utilisateur->+Serveur: clique sur le bouton de récupération de mot de passe
+Serveur->+Serveur: récuperation des informations à afficher
+deactivate Serveur
+Serveur-->Utilisateur: affichage du formulaire de récuperation de mot de passe
+deactivate Serveur
+Utilisateur->+Utilisateur: complétion du formulaire
+deactivate Utilisateur
+Utilisateur->+Serveur: validation du formulaire
+alt Adresse mail correcte
+Serveur-->Utilisateur: envoie d'un mail de récuperation
+Utilisateur->+Utilisateur: ouverture du lien de récuperation
+Utilisateur->+Utilisateur: complétion du formulaire
+deactivate Utilisateur
+Utilisateur->Serveur: validation du formulaire
+deactivate Utilisateur
+Serveur->+Serveur: mise à jour du mot de passe dans la base de données
+deactivate Serveur
+Serveur-->Utilisateur: affichage du formulaire de connexion
+else Adresse mail incorrecte
+Serveur-->Utilisateur: réponse indiquant la raison de l'échec de la réinitialisation du mot de passe
+deactivate Serveur
+end
+end
 Utilisateur->+Utilisateur: complétion du formulaire
 deactivate Utilisateur
 Utilisateur->+Serveur: validation du formulaire
@@ -11,3 +35,5 @@ Serveur-->Utilisateur: authentification
 else Connexion échouée
 Serveur-->Utilisateur: réponse indiquant la raison\nde l'échec de l'authentification
 deactivate Serveur
+end
+
