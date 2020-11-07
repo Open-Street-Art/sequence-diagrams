@@ -1,39 +1,38 @@
-Utilisateur->+Serveur: clique sur le bouton de connexion
-Serveur->+Serveur: récuperation des informations à afficher
-deactivate Serveur
-Serveur-->Utilisateur: affichage du formulaire de connexion
-deactivate Serveur
+Utilisateur->+Systeme: clique sur le bouton de connexion
+Systeme->+Systeme: récuperation des informations à afficher
+deactivate Systeme
+Systeme-->Utilisateur: affichage du formulaire de connexion
+deactivate Systeme
 loop Tant que l'utilisateur souhaite réinitialiser son mot de passe
-Utilisateur->+Serveur: clique sur le bouton de récupération de mot de passe
-Serveur->+Serveur: récuperation des informations à afficher
-deactivate Serveur
-Serveur-->Utilisateur: affichage du formulaire de récuperation de mot de passe
-deactivate Serveur
+Utilisateur->+Systeme: clique sur le bouton de récupération de mot de passe
+Systeme->+Systeme: récuperation des informations à afficher
+deactivate Systeme
+Systeme-->Utilisateur: affichage du formulaire de récuperation de mot de passe
+deactivate Systeme
 Utilisateur->+Utilisateur: complétion du formulaire
 deactivate Utilisateur
-Utilisateur->+Serveur: validation du formulaire
+Utilisateur->+Systeme: validation du formulaire
 alt Adresse mail correcte
-Serveur-->Utilisateur: envoie d'un mail de récuperation
+Systeme-->Utilisateur: envoie d'un mail de récuperation
 Utilisateur->+Utilisateur: ouverture du lien de récuperation
 Utilisateur->+Utilisateur: complétion du formulaire
 deactivate Utilisateur
-Utilisateur->Serveur: validation du formulaire
+Utilisateur->Systeme: validation du formulaire
 deactivate Utilisateur
-Serveur->+Serveur: mise à jour du mot de passe dans la base de données
-deactivate Serveur
-Serveur-->Utilisateur: affichage du formulaire de connexion
+Systeme->+Systeme: mise à jour du mot de passe dans la base de données
+deactivate Systeme
+Systeme-->Utilisateur: affichage du formulaire de connexion
 else Adresse mail incorrecte
-Serveur-->Utilisateur: réponse indiquant la raison de l'échec de la réinitialisation du mot de passe
-deactivate Serveur
+Systeme-->Utilisateur: réponse indiquant la raison de l'échec de la réinitialisation du mot de passe
+deactivate Systeme
 end
 end
 Utilisateur->+Utilisateur: complétion du formulaire
 deactivate Utilisateur
-Utilisateur->+Serveur: validation du formulaire
+Utilisateur->+Systeme: validation du formulaire
 alt Connexion réussie
-Serveur-->Utilisateur: authentification
+Systeme-->Utilisateur: authentification
 else Connexion échouée
-Serveur-->Utilisateur: réponse indiquant la raison\nde l'échec de l'authentification
-deactivate Serveur
+Systeme-->Utilisateur: réponse indiquant la raison\nde l'échec de l'authentification
+deactivate Systeme
 end
-
