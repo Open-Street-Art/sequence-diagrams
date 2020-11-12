@@ -1,7 +1,6 @@
 Ouverture d'un itinéraire :
-
-Utilsateur->+Serveur: Clique sur le lien d'itinéraire\n d'une oeuvre
-Serveur-->Utilsateur: Récupération des points GPS \nde l'itinéraire
-deactivate Serveur
+Utilsateur->+Systeme: Clique sur le lien d'itinéraire\n d'une oeuvre
+Systeme-->Utilsateur: Récupération des points GPS \nde l'itinéraire
+deactivate Systeme
 Utilsateur->+Utilsateur: Ouverture de l'itinéraire dans\n une application externe
 deactivate Utilsateur
