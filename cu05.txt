@@ -10,7 +10,6 @@ Systeme->+Systeme: Récupération de l'adresse ip
 deactivate Systeme
 Systeme->+Systeme: Récupération de la localisation de l'adresse ip
 deactivate Systeme
-deactivate Fournisseur de localisation
 Systeme->+Systeme: Actualisation de la Systeme avec la localisation de l'adresse ip
 deactivate Systeme
 else else
