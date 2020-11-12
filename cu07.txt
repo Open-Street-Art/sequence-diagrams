@@ -1,15 +1,15 @@
-Utilisateur->+Serveur: clique sur l'édition des informations du profil
-Serveur->+Serveur: récuperation des informations à afficher
-deactivate Serveur
-Serveur-->Utilisateur: affichage de la page d'édition\ndes informations
-deactivate Serveur
+Utilisateur->+Systeme: clique sur l'édition des informations du profil
+Systeme->+Systeme: récuperation des informations à afficher
+deactivate Systeme
+Systeme-->Utilisateur: affichage de la page d'édition\ndes informations
+deactivate Systeme
 Utilisateur->+Utilisateur: complétion du formulaire
 deactivate Utilisateur
-Utilisateur->+Serveur: validation des données entrées
+Utilisateur->+Systeme: validation des données entrées
 alt les données sont correctes
-    Serveur->+Serveur: modification des données en base de données
-    deactivate Serveur
-    Serveur-->Utilisateur: affichage du profil avec les\nnouvelles modifications
+    Systeme->+Systeme: modification des données en base de données
+    deactivate Systeme
+    Systeme-->Utilisateur: affichage du profil avec les\nnouvelles modifications
 else les données sont incorrectes
-    Serveur-->Utilisateur: réponse indiquant la raison\nde l'échec de l'authentification
-deactivate Serveur
+    Systeme-->Utilisateur: réponse indiquant la raison\nde l'échec de l'authentification
+deactivate Systeme
