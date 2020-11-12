@@ -1,21 +1,20 @@
-Exporter fichier: 
-Utilisateur->+Serveur: Clique sur le bouton d'exportation
-Serveur-->Utilisateur: Affichage de la liste des choix de format d'exportation
-deactivate Serveur
+Utilisateur->+Systeme: Clique sur le bouton d'exportation
+Systeme-->Utilisateur: Affichage de la liste des choix de format d'exportation
+deactivate Systeme
 alt L'utilisateur choisi le format PDF
-Utilisateur->+Serveur: Sélectionne une exportation PDF
-Serveur->+Serveur: Récupération de la liste des oeuvres de la ville
-deactivate Serveur
-Serveur->+Serveur: Génération du fichier PDF
-deactivate Serveur
-Serveur-->Utilisateur: Envoie du fichier
-deactivate Serveur
+Utilisateur->+Systeme: Sélectionne une exportation PDF
+Systeme->+Systeme: Récupération de la liste des oeuvres de la ville
+deactivate Systeme
+Systeme->+Systeme: Génération du fichier PDF
+deactivate Systeme
+Systeme-->Utilisateur: Envoie du fichier
+deactivate Systeme
 else L'utilisateur choisi le format CSV
-Utilisateur->+Serveur: Sélectionne une exportation CSV
-Serveur->+Serveur: Récupération de la liste des oeuvres de la ville
-deactivate Serveur
-Serveur->+Serveur: Génération du fichier CSV
-deactivate Serveur
-Serveur-->Utilisateur: Envoie du fichier
-deactivate Serveur
+Utilisateur->+Systeme: Sélectionne une exportation CSV
+Systeme->+Systeme: Récupération de la liste des oeuvres de la ville
+deactivate Systeme
+Systeme->+Systeme: Génération du fichier CSV
+deactivate Systeme
+Systeme-->Utilisateur: Envoie du fichier
+deactivate Systeme
 end
