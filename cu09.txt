@@ -1,36 +1,36 @@
-Administrateur->+Serveur: clique sur le bouton pour ouvrir\nle menu d'administration
-Serveur->+Serveur: récuperation des informations à afficher
-deactivate Serveur
-Serveur-->Administrateur: affichage du menu d'administration
-deactivate Serveur
+Administrateur->+Systeme: clique sur le bouton pour ouvrir\nle menu d'administration
+Systeme->+Systeme: récuperation des informations à afficher
+deactivate Systeme
+Systeme-->Administrateur: affichage du menu d'administration
+deactivate Systeme
 alt menu de validation des oeuvres
-    Administrateur->+Serveur: clique sur le bouton du menu de validation des oeuvres
-    Serveur->+Serveur: récuperation des oeuvres en attentes de validation
-    deactivate Serveur
-    Serveur-->Administrateur: affichage des oeuvres en attentes de validation
-    deactivate Serveur
+    Administrateur->+Systeme: clique sur le bouton du menu de validation des oeuvres
+    Systeme->+Systeme: récuperation des oeuvres en attentes de validation
+    deactivate Systeme
+    Systeme-->Administrateur: affichage des oeuvres en attentes de validation
+    deactivate Systeme
     alt accepte une oeuvre
-        Administrateur->+Serveur: clique sur le bouton de validation d'une oeuvre
-        Serveur->+Serveur: validation de l'oeuvre en base de données
-        deactivate Serveur
-        Serveur-->Administrateur: réponse indiquant la validation de l'oeuvre
-        deactivate Serveur
+        Administrateur->+Systeme: clique sur le bouton de validation d'une oeuvre
+        Systeme->+Systeme: validation de l'oeuvre en base de données
+        deactivate Systeme
+        Systeme-->Administrateur: réponse indiquant la validation de l'oeuvre
+        deactivate Systeme
     else rejette une oeuvre
-        Administrateur->+Serveur: clique sur le bouton de refus d'une oeuvre
-        Serveur->+Serveur: refus de l'oeuvre en base de données
-        deactivate Serveur
-        Serveur-->Administrateur: réponse indiquant le refus de l'oeuvre
-        deactivate Serveur
+        Administrateur->+Systeme: clique sur le bouton de refus d'une oeuvre
+        Systeme->+Systeme: refus de l'oeuvre en base de données
+        deactivate Systeme
+        Systeme-->Administrateur: réponse indiquant le refus de l'oeuvre
+        deactivate Systeme
     end
 else menu de modification des oeuvres
-    Administrateur->+Serveur: clique sur le bouton pour ouvrir\nle menu de modification des oeuvres
-    Serveur->+Serveur: récuperation des informations à afficher
-    deactivate Serveur
-    Serveur-->Administrateur: affichage de la liste des oeuvres de la base de données
-    deactivate Serveur
-    Administrateur->+Serveur: opération CRUD sur une oeuvre
-    Serveur->+Serveur: modification des informations de l'oeuvre en base de données
-    deactivate Serveur
-    Serveur-->Administrateur: réponse du serveur concernant les modifications apportées
-    deactivate Serveur
+    Administrateur->+Systeme: clique sur le bouton pour ouvrir\nle menu de modification des oeuvres
+    Systeme->+Systeme: récuperation des informations à afficher
+    deactivate Systeme
+    Systeme-->Administrateur: affichage de la liste des oeuvres de la base de données
+    deactivate Systeme
+    Administrateur->+Systeme: opération CRUD sur une oeuvre
+    Systeme->+Systeme: modification des informations de l'oeuvre en base de données
+    deactivate Systeme
+    Systeme-->Administrateur: réponse du Systeme concernant les modifications apportées
+    deactivate Systeme
 end
