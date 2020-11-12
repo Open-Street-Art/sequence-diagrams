@@ -1,31 +1,29 @@
-Proposer une oeuvre:
-
 alt L'utilisateur propose l'ajout d'une oeuvre
-Utilisateur->+Serveur: Clique sur proposer une oeuvre
-Serveur-->Utilisateur: Affichage du formulaire d'ajout d'une oeuvre
-deactivate Serveur
+Utilisateur->+Systeme: Clique sur proposer une oeuvre
+Systeme-->Utilisateur: Affichage du formulaire d'ajout d'une oeuvre
+deactivate Systeme
 Utilisateur->+Utilisateur: Remplissage du formulaire
 deactivate Utilisateur
-Utilisateur->+Serveur: Valide la propostion d'ajout
+Utilisateur->+Systeme: Valide la propostion d'ajout
 alt Données correctes
-Serveur->+Serveur: Proposition enregistrée
-deactivate Serveur
-Serveur-->Utilisateur: Message indiquant que la propostion est prise en compte
+Systeme->+Systeme: Proposition enregistrée
+deactivate Systeme
+Systeme-->Utilisateur: Message indiquant que la propostion est prise en compte
 else Donnéees incorrectes
-Serveur-->Utilisateur: Message indiquant que les données ne sont pas valide
-deactivate Serveur
+Systeme-->Utilisateur: Message indiquant que les données ne sont pas valide
+deactivate Systeme
 end alt
 else L'utilisateur propose la modification d'une oeuvre
-Utilisateur->+Serveur: Clique sur proposer une modification
-Serveur-->Utilisateur: Affichage du formulaire de modification \n pré-rempli avec les information de l'oeuvre
-deactivate Serveur
+Utilisateur->+Systeme: Clique sur proposer une modification
+Systeme-->Utilisateur: Affichage du formulaire de modification \n pré-rempli avec les information de l'oeuvre
+deactivate Systeme
 Utilisateur->+Utilisateur: Remplissage du formulaire
 deactivate Utilisateur
-Utilisateur->+Serveur: Valide la propostion de modification
+Utilisateur->+Systeme: Valide la propostion de modification
 alt Données correctes
-Serveur->+Serveur: Proposition de modification enregistrée
-deactivate Serveur
-Serveur-->Utilisateur: Message indiquant que la propostion est prise en compte
+Systeme->+Systeme: Proposition de modification enregistrée
+deactivate Systeme
+Systeme-->Utilisateur: Message indiquant que la propostion est prise en compte
 else Donnéees incorrectes
-Serveur-->Utilisateur: Message indiquant que les données ne sont pas valide
-deactivate Serveur
+Systeme-->Utilisateur: Message indiquant que les données ne sont pas valide
+deactivate Systeme
