@@ -1,26 +1,24 @@
-Visualiser la carte:
-
-Utilisateur->+Serveur: Ouverture de l'application
-Serveur->Fournisseur de cartes: Rêquete d'affichage de la carte
-Fournisseur de cartes-->>Serveur: Affichage de la carte
+Utilisateur->+Systeme: Ouverture de l'application
+Systeme->+Systeme: Affichage de la carte
+deactivate Systeme
 alt localisation de l'utilisateur accessible par l'application
-Serveur->+Serveur: Actualisation de la position avec la localisation de l'utilisateur
-deactivate Serveur
+Systeme->+Systeme: Actualisation de la Systeme avec la localisation de l'utilisateur
+deactivate Systeme
 else else
 alt première visite de l'utilisateur
-Serveur->+Serveur: Récupération de l'adresse ip
-deactivate Serveur
-Serveur->+Fournisseur de localisation: Requête de localisation de l'adresse ip
-Fournisseur de localisation-->>Serveur: Envoie de la localisation de l'adresse ip
+Systeme->+Systeme: Récupération de l'adresse ip
+deactivate Systeme
+Systeme->+Systeme: Récupération de la localisation de l'adresse ip
+deactivate Systeme
 deactivate Fournisseur de localisation
-Serveur->+Serveur: Actualisation de la position avec la localisation de l'adresse ip
-deactivate Serveur
+Systeme->+Systeme: Actualisation de la Systeme avec la localisation de l'adresse ip
+deactivate Systeme
 else else
-Serveur->+Serveur: Actualisation de la position \navec la dernière position de l'utilisateur\n lors du dernier usage de l'application
-deactivate Serveur
+Systeme->+Systeme: Actualisation de la Systeme \navec la dernière Systeme de l'utilisateur\n lors du dernier usage de l'application
+deactivate Systeme
 end
 end
-Serveur->+Serveur: Récupération des œuvres proches de la position
-deactivate Serveur
-Serveur-->>Utilisateur: Affichage de la carte avec les œuvres
-deactivate Serveur
+Systeme->+Systeme: Récupération des œuvres proches de la Systeme
+deactivate Systeme
+Systeme-->>Utilisateur: Affichage de la carte avec les œuvres
+deactivate Systeme
