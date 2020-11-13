@@ -2,7 +2,7 @@ Utilisateur->+Systeme: Ouverture de l'application
 Systeme->+Systeme: Affichage de la carte
 deactivate Systeme
 alt localisation de l'utilisateur accessible par l'application
-Systeme->+Systeme: Actualisation de la Systeme avec la localisation de l'utilisateur
+Systeme->+Systeme: Actualisation de la position avec la localisation de l'utilisateur
 deactivate Systeme
 else else
 alt première visite de l'utilisateur
@@ -10,14 +10,14 @@ Systeme->+Systeme: Récupération de l'adresse ip
 deactivate Systeme
 Systeme->+Systeme: Récupération de la localisation de l'adresse ip
 deactivate Systeme
-Systeme->+Systeme: Actualisation de la Systeme avec la localisation de l'adresse ip
+Systeme->+Systeme: Actualisation de la position avec la localisation de l'adresse ip
 deactivate Systeme
 else else
-Systeme->+Systeme: Actualisation de la Systeme \navec la dernière Systeme de l'utilisateur\n lors du dernier usage de l'application
+Systeme->+Systeme: Actualisation de la position \navec la position de la carte lors du dernier usage de l'application
 deactivate Systeme
 end
 end
-Systeme->+Systeme: Récupération des œuvres proches de la Systeme
+Systeme->+Systeme: Récupération des œuvres proches de la position
 deactivate Systeme
 Systeme-->>Utilisateur: Affichage de la carte avec les œuvres
 deactivate Systeme
