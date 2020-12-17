@@ -1,0 +1,89 @@
+07-01
+alt L'utilisateur modifie son profil
+Navigateur->+Profile: L'utilisateur réalise des modifications\ndans le sous-composant EditProfile
+Profile->+Controller: UserController: patchUserProfile
+Controller->+Repository: UserRepository: findById
+Repository-->Controller: Retour de référence vers l'entité du user
+deactivate Repository
+Controller->+Controller: Modification des informations de l'utilisateur
+deactivate Controller
+Controller->+Repository: UserRepository: save
+Repository-->Controller: Retour de référence vers l'utilisateur
+deactivate Repository
+Controller-->Profile: réponse de succès de la modification
+deactivate Controller
+Profile-->Navigateur: Mise à jour de l'affichage
+deactivate Profile
+else L'utilisateur modifie ses paramêtres
+alt L'utilisateur change son email
+Navigateur->+Parameters: L'utilisateur clique sur le bouton changement d'adresse mail
+Parameters-->Navigateur: Affichage du formulaire de changement d'adresse mail
+deactivate Parameters
+Navigateur->+Parameters: Remplissage et confirmation du formulaire
+Parameters->+Controller: UserController: patchUserEmail
+Controller->+Repository: UserRepository: findById
+Repository-->Controller: Retour de référence vers l'utilisateur
+deactivate Repository
+Controller->+Controller: Modification de l'adresse mail \ndans les attributs de l'utilisateur
+deactivate Controller
+Controller->+Repository: UserRepository: save
+Repository-->Controller: Retour de référence vers l'utilisateur
+deactivate Repository
+Controller-->Parameters: Confirmation du changement d'adresse mail
+deactivate Controller
+Parameters-->Navigateur: Actualisation de l'affichage
+deactivate Parameters
+else L'utilisateur change son mot de passe
+Navigateur->+Parameters: L'utilisateur clique sur le bouton changement de mot de passe
+Parameters-->Navigateur: Affichage du formulaire de changement de mot de passe
+deactivate Parameters
+Navigateur->+Parameters: Remplissage et confirmation du formulaire
+Parameters->+Controller: UserController: patchUserPassword
+Controller->+Repository: UserRepository: findById
+Repository-->Controller: Retour de référence vers l'utilisateur
+deactivate Repository
+Controller->+Controller: Modification et encryptage du mot de passe \ndans les attributs de l'utilisateur
+deactivate Controller
+Controller->+Repository: UserRepository: save
+Repository-->Controller: Retour de référence vers l'utilisateur
+deactivate Repository
+Controller-->Parameters: Confirmation du changement du mot de passe
+deactivate Controller
+Parameters-->Navigateur: Actualisation de l'affichage
+deactivate Parameters
+
+07-02
+alt L'utilisateur ajoute une oeuvre en favoris
+Navigateur->+Art: Clique sur "Ajouter à vos favoris" dans ArtAction
+Art->+Controller: FavouriteController: postUserNewFavouriteArt
+Controller->+Repository: ArtRepository: findById\nUserRepository: findById
+Repository-->Controller: Retour des reférences des repository
+deactivate Repository
+deactivate Repository
+Controller->+Entity: UserEntity: addFavoriteArt
+Entity-->Controller: Retour d'une référence vers l'entité\navec l'oeuvre ajoutée aux favoris
+deactivate Entity
+Controller->+Repository: UserRepository: save
+Repository-->Controller: Retour de la référence vers l'entité
+deactivate Repository
+Controller-->Art: Confirmation de l'ajout aux favoris
+deactivate Controller
+Art-->Navigateur: Actualisation de l'affichage
+deactivate Art
+else L'utilisateur ajoute une ville en favoris
+Navigateur->+City: Clique sur "Ajouter à vos favoris" dans CityAction
+City->+Controller: FavouriteController: postUserNewFavouriteCity
+Controller->+Repository: CityRepository: findById\nUserRepository: findById
+Repository-->Controller: Retour des reférences des repository
+deactivate Repository
+deactivate Repository
+Controller->+Entity: UserEntity: addFavoriteCity
+Entity-->Controller: Retour d'une référence vers l'entité\navec la ville ajoutée aux favoris
+deactivate Entity
+Controller->+Repository: UserRepository: save
+Repository-->Controller: Retour de la référence vers l'entité
+deactivate Repository
+Controller-->City: Confirmation de l'ajout aux favoris
+deactivate Controller
+City-->Navigateur: Actualisation de l'affichage
+deactivate City
