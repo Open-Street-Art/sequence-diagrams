@@ -1,0 +1,16 @@
+Navigateur->+Register: Remplit le formulaire d'inscription\net clique sur le bouton d'envoi
+Register->+Controller: JwtAuthController : postRegister
+Controller->+Controller: vérification de la cohérence\ndes données
+deactivate Controller
+Controller->+Repository: UserRepository : findByEmail && findByUsername
+Repository-->-Controller: réponse d'une référence du repository
+alt la référence est nulle
+Controller->+Entity: new UserEntity()
+Entity-->-Controller: retour de la référence de l'entité
+Controller->+Repository: UserEntity : save
+Repository-->-Controller: réponse du repository
+Controller-->Register: réponse de l'API signalant la création du compte
+else la référence n'est pas nulle
+Controller-->-Register: réponse de l'API signalant l'invalidité des données entrées
+end
+Register-->-Navigateur: affichage du message correspondant\nà la réponse de l'API

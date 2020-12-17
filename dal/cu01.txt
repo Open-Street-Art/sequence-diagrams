@@ -1,16 +1,8 @@
-Utilisateur->+Register: Remplit le formulaire d'inscription\net clique sur le bouton d'envoi
-Register->+JwtAuthController: POST /api/register
-JwtAuthController->+JwtAuthController: vérification de la cohérence\ndes données
-deactivate JwtAuthController
-JwtAuthController->+UserRepository: recherche d'un utilisateur avec l'email\net le nom d'utilisateur entré
-UserRepository-->-JwtAuthController: réponse d'une référence du repository
-alt la référence est nulle
-JwtAuthController->+UserEntity: création d'une entité UserEntity
-UserEntity-->-JwtAuthController: retour de la référence de l'entité
-JwtAuthController->+UserRepository: persistance de l'entité dans la base de données
-UserRepository-->-JwtAuthController: réponse du repository
-JwtAuthController-->Register: réponse de l'API signalant la création du compte
-else la référrence n'est pas nulle
-JwtAuthController-->-Register: réponse de l'API signalant l'invalidité des données entrées
-end
-Register-->-Utilisateur: affichage du message correspondant\nà la réponse de l'API
+Navigateur->+Home: Envoie la localisation pointé\net le niveau de zoom de la carte
+Home->+OpenStreetMap: Requête des données de cartes\naux coordonnées indiquées
+OpenStreetMap-->-Home: Réponse de l'API des images et données de cartes
+Home->+Controller: ArtController : getArtsByLocalisation
+Controller->+Repository: ArtRepository : findByLocalisationAndPrecision
+Repository-->-Controller: Réponse de références du répository
+Controller-->-Home: Réponse de l'API indiquant les informations\ndes oeuvres présentes dans le rayon précisé
+Home-->-Navigateur: Affichage de la carte selon la localisation\net le zoom avec les oeuvres présentes
