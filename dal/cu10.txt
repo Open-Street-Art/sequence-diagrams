@@ -1,0 +1,24 @@
+alt L'utilisateur choisit le format PDF
+Navigateur->+City: Clique sur le bouton d'exportation au format PDF
+City->+Controller: MediaController: getArtsListPDF
+Controller->+Repository: ArtRepository: findByCity
+Repository-->Controller: Réponse du repository
+deactivate Repository
+Controller->+Controller: Génération du fichier PDF
+deactivate Controller
+Controller-->City: Envoi du fichier PDF
+deactivate Controller
+City-->Navigateur: Téléchargement du fichier PDF
+deactivate City
+else L'utilisateur choisit le format CSV
+Navigateur->+City: Clique sur le bouton d'exportation au format PDF
+City->+Controller: MediaController: getArtsListCSV
+Controller->+Repository: ArtRepository: findByCity
+Repository-->Controller: Réponse du repository
+deactivate Repository
+Controller->+Controller: Génération du fichier CSV
+deactivate Controller
+Controller-->City: Envoi du fichier CSV
+deactivate Controller
+City-->Navigateur: Téléchargement du fichier CSV
+deactivate City
