@@ -1,0 +1,9 @@
+Navigateur->+Art: Clique sur itinéraire dans le sous-composant ArtAction
+Art->+Controller: ArtController: getArtNavigation
+Controller->+Repository: ArtRepository: findById
+Repository-->Controller: Réponse du repository
+deactivate Repository
+Controller-->Art: Envoi d'une url contenant l'itinéraire vers l'oeuvre
+deactivate Controller
+Art-->Navigateur: Ouverture de l'itinéraire dans une application externe
+deactivate Art
