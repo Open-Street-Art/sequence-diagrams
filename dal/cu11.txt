@@ -1,0 +1,19 @@
+Navigateur->+SearchUser: Saisie dans la barre de recherche
+SearchUser->+Controller: SearchController: getSearchUsers
+Controller->+Repository: UserRepository: findByName
+Repository-->Controller: Réponse de référence du repository
+deactivate Repository
+Controller-->SearchUser: Réponse de l'API contenant l'id, le nom \n et l'image de profil des utilisateurs correspondants
+deactivate Controller
+SearchUser-->Navigateur: Affichage de la liste des utilisateurs
+deactivate SearchUser
+Navigateur->+SearchUser: Clique sur un utilisateur
+SearchUser->+Controller: UserController: getUserProfile
+deactivate SearchUser
+Controller->+Repository: UserRepository: findById
+Repository-->Controller: Réponse de référence du repository
+deactivate Repository
+Controller->+Profile: Création du composant Profile avec les données de l'utilisateur
+deactivate Controller
+Profile-->Navigateur: Affichage du profil de l'utilisateur
+deactivate Profile
