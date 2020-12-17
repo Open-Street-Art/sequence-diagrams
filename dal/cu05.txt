@@ -1,0 +1,21 @@
+Navigateur->+Authentication: Envoi du formulaire d'authentification
+Authentication->+Controller: JwtAuthController : postAuthenticate
+Controller->+Controller: Chiffrage du mot de passe envoyé
+deactivate Controller
+Controller->+Repository: UserRepository : findByEmail
+Repository-->-Controller: Réponse d'une référence du repository
+alt la référence est nulle
+Controller-->Authentication: Réponse de l'API signalant une connexion refusée
+else la référence n'est pas nulle
+Controller->+Entity: Récupération du mot de passe chiffré du UserEntity
+Entity-->-Controller: Réponse de UserEntity
+Controller->+Controller: Vérification du mot de passe chiffré\navec celui présent dans l'entité
+deactivate Controller
+alt le mot de passe est correct
+Controller->+Controller: Génération d'un token JWT basé sur\nl'identifiant et les rôles du compte
+deactivate Controller
+Controller-->Authentication: Réponse de l'API en renvoyant un token JWT
+else le mot de passe est incorrect
+Controller-->-Authentication: Réponse de l'API signalant une connexion refusée
+end
+Authentication-->-Navigateur: Affichage du message correspondant\nà la réponse de l'API

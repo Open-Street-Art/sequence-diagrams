@@ -1,0 +1,12 @@
+Navigateur->+Contribution: Saisie du formulaire de contribution d'une oeuvre
+Contribution->+Controller: ContribController: postContrib
+Controller->+Controller: Vérification de la cohérence\ndes données
+deactivate Controller
+alt les données sont incorrectes
+Controller-->Contribution: Réponse de l'API signalant\nun formulaire incorrect
+else les données sont correctes
+Controller->+Repository: ContribRepository: save
+Repository-->-Controller: Réponse du repository
+Controller-->-Contribution: Réponse de l'API signalant\nla création de la contribution
+Contribution-->-Navigateur: Affichage du message correspondant\nà la réponse de l'API
+end
