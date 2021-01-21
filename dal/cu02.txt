@@ -1,11 +1,11 @@
 Navigateur->+Home: Saisie dans le sous-composant SearchArt
-Home->+Controller: SearchController: getSearchArts\nSearchController: getSearchCities\nSearchController: getSearchArtsWithArtist
+Home->>+Controller: SearchController: getSearchArts\nSearchController: getSearchCities\nSearchController: getSearchArtsWithArtist
 Controller->+Repository: ArtRepository: findByName\nCityRepository: findByName\nArtRepository: findByArtist
 Repository-->-Controller: Réponse de références des repositories
 Controller-->-Home: Réponse de l'API indiquant les informations\ndes oeuvres et des villes selon la saisie
 Home-->Navigateur: Affichage de l'autocomplétion dans\nle sous-composant SearchArt
 Navigateur->Home: Validation de la saisie\ndans le sous-composant SearchArt
-Home->+Controller: SearchController: getSearchArts\nSearchController: getSearchCities\nSearchController: getSearchArtsWithArtist
+Home->>+Controller: SearchController: getSearchArts\nSearchController: getSearchCities\nSearchController: getSearchArtsWithArtist
 Controller->+Repository: ArtRepository: findByName\nCityRepository: findByName\nArtRepository: findByArtist
 Repository-->-Controller: Réponse de références des repositories
 Controller-->-Home: Réponse de l'API indiquant les informations\ndes oeuvres et des villes selon la saisie
