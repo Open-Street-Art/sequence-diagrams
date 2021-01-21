@@ -1,5 +1,5 @@
 Navigateur->+Contribution: Saisie du formulaire de contribution d'une oeuvre
-Contribution->+Controller: ContribController: postContrib
+Contribution->>+Controller: ContribController: postContrib
 Controller->+Controller: Vérification de la cohérence\ndes données
 deactivate Controller
 alt les données sont incorrectes
