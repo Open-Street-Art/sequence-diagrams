@@ -1,7 +1,7 @@
 07-01
 alt L'utilisateur modifie son profil
 Navigateur->+Profile: L'utilisateur réalise des modifications\ndans le sous-composant EditProfile
-Profile->+Controller: UserController: patchUserProfile
+Profile->>+Controller: UserController: patchUserProfile
 Controller->+Repository: UserRepository: findById
 Repository-->Controller: Retour de référence vers l'entité du user
 deactivate Repository
@@ -20,7 +20,7 @@ Navigateur->+Parameters: L'utilisateur clique sur le bouton changement d'adresse
 Parameters-->Navigateur: Affichage du formulaire de changement d'adresse mail
 deactivate Parameters
 Navigateur->+Parameters: Remplissage et confirmation du formulaire
-Parameters->+Controller: UserController: patchUserEmail
+Parameters->>+Controller: UserController: patchUserEmail
 Controller->+Repository: UserRepository: findById
 Repository-->Controller: Retour de référence vers l'utilisateur
 deactivate Repository
@@ -38,7 +38,7 @@ Navigateur->+Parameters: L'utilisateur clique sur le bouton changement de mot de
 Parameters-->Navigateur: Affichage du formulaire de changement de mot de passe
 deactivate Parameters
 Navigateur->+Parameters: Remplissage et confirmation du formulaire
-Parameters->+Controller: UserController: patchUserPassword
+Parameters->>+Controller: UserController: patchUserPassword
 Controller->+Repository: UserRepository: findById
 Repository-->Controller: Retour de référence vers l'utilisateur
 deactivate Repository
@@ -55,7 +55,7 @@ deactivate Parameters
 07-02
 alt L'utilisateur ajoute une oeuvre en favoris
 Navigateur->+Art: Clique sur "Ajouter à vos favoris" dans ArtAction
-Art->+Controller: FavouriteController: postUserNewFavouriteArt
+Art->>+Controller: FavouriteController: postUserNewFavouriteArt
 Controller->+Repository: ArtRepository: findById\nUserRepository: findById
 Repository-->Controller: Retour des reférences des repository
 deactivate Repository
@@ -72,7 +72,7 @@ Art-->Navigateur: Actualisation de l'affichage
 deactivate Art
 else L'utilisateur ajoute une ville en favoris
 Navigateur->+City: Clique sur "Ajouter à vos favoris" dans CityAction
-City->+Controller: FavouriteController: postUserNewFavouriteCity
+City->>+Controller: FavouriteController: postUserNewFavouriteCity
 Controller->+Repository: CityRepository: findById\nUserRepository: findById
 Repository-->Controller: Retour des reférences des repository
 deactivate Repository
@@ -87,3 +87,20 @@ Controller-->City: Confirmation de l'ajout aux favoris
 deactivate Controller
 City-->Navigateur: Actualisation de l'affichage
 deactivate City
+else L'utilisateur ajoute un artiste en favoris
+Navigateur->+Profile: Clique sur "Ajouter à vos favoris" dans Profile
+Profile->>+Controller: FavouriteController: postUserNewFavouriteArtist
+Controller->+Repository: UserRepository: findById\nUserRepository: findById
+Repository-->Controller: Retour des reférences des repository
+deactivate Repository
+deactivate Repository
+Controller->+Entity: UserEntity: addFavoriteUser
+Entity-->Controller: Retour d'une référence vers l'entité\navec l'artiste ajoutée aux favoris
+deactivate Entity
+Controller->+Repository: UserRepository: save
+Repository-->Controller: Retour de la référence vers l'entité
+deactivate Repository
+Controller-->Profile: Confirmation de l'ajout aux favoris
+deactivate Controller
+Profile-->Navigateur: Actualisation de l'affichage
+deactivate Profile
