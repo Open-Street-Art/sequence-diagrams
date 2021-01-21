@@ -1,5 +1,5 @@
 Navigateur->+Register: Saisie du formulaire d'inscription\net clique sur le bouton d'envoi
-Register->+Controller: JwtAuthController : postRegister
+Register->>+Controller: JwtAuthController : postRegister
 Controller->+Controller: Vérification de la cohérence\ndes données
 deactivate Controller
 Controller->+Repository: UserRepository : findByEmail && findByUsername
