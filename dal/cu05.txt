@@ -1,5 +1,5 @@
 Navigateur->+Authentication: Envoi du formulaire d'authentification
-Authentication->+Controller: JwtAuthController : postAuthenticate
+Authentication->>+Controller: JwtAuthController : postAuthenticate
 Controller->+Controller: Chiffrage du mot de passe envoyé
 deactivate Controller
 Controller->+Repository: UserRepository : findByEmail
