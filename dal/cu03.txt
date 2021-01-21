@@ -8,4 +8,4 @@ end
 Controller->+Repository: ArtRepository: findById
 Repository-->-Controller: Réponse de références du repository
 Controller->+Art: Création du composant Art avec les informations de l'API
-Art->-Navigateur: Affichage des informations de l'oeuvre selectionnée
+Art-->-Navigateur: Affichage des informations de l'oeuvre selectionnée
