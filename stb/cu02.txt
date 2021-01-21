@@ -10,17 +10,17 @@ end
 Utilisateur->+Systeme: validation et traitement de la saisie
 Systeme->+Systeme: vérification de l'existence d'une ville\ncompatible avec la saisie
 deactivate Systeme
-alt Une ville correspond à la saisie
+alt une ville correspond à la saisie
     Systeme->+Systeme: réponse contenant les coordonnées GPS de la ville
     deactivate Systeme
-else Aucune ville ne correspond à la saisie
+else aucune ville ne correspond à la saisie
     Systeme->+Systeme: réponse vide
     deactivate Systeme
 end
-alt Le résultat est une oeuvre
-Systeme->Utilisateur: affichage de la localisation et\ndes informations de l'oeuvre
-else Le résultat est un artiste
-Systeme->Utilisateur: affichage des informations de l'artiste\navec les localisations de ses oeuvres
-else Le résultat est une ville
-Systeme->Utilisateur: affichage des informations de la ville\navec les localisation des oeuvres de cette ville
+alt le résultat est une oeuvre
+Systeme->Utilisateur: affichage de la localisation de l'oeuvre
+else le résultat est un artiste
+Systeme->Utilisateur: affichage des localisations des oeuvres de l'artiste
+else le résultat est une ville
+Systeme->Utilisateur: affichage des localisation des oeuvres de cette ville
 deactivate Systeme
