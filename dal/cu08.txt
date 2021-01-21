@@ -1,0 +1,39 @@
+08 1
+alt L'administrateur ajoute une oeuvre
+Navigateur->+Contribution: Saisie du formulaire de contribution en tant qu'administrateur
+Contribution->>+Controller: ArtController: postArt
+Controller->+Controller: Vérification de la cohérence des données
+deactivate Controller
+alt les données sont incorrectes
+Controller-->Contribution: Réponse de l'API signalant\n un formulaire incorrect
+else les données sont correctes
+Controller->+Repository: ArtRepository: save
+Repository-->-Controller: Réponse du repository
+Controller-->-Contribution: Réponse de l'API signalant\n la création de la contribution
+end
+Contribution-->-Navigateur: Affichage du message corresponsant\n à la réponse de l'API
+else L'administrateur modifie une oeuvre
+Navigateur->+Contribution: Saisie du formulaire de contribution en tant qu'administrateur
+Contribution->>+Controller: ArtController: patchArt
+Controller->+Controller: Vérification de la cohérence des données
+deactivate Controller
+alt les données sont incorrectes
+Controller-->Contribution: Réponse de l'API signalant\n un formulaire incorrect
+else les données sont correctes
+Controller->+Repository: Récuperation de l'entité\n Art à modifier
+Repository-->-Controller: Réponse de la référence de l'entité
+Controller->+Controller: Modification de l'entité\n selon les données
+deactivate Controller
+Controller->+Repository: ArtRepository: save
+Repository-->-Controller: Réponse du repository
+Controller-->-Contribution: Réponse de l'API signalant\n la création de la contribution
+end
+Contribution-->-Navigateur: Affichage du message corresponsant\n à la réponse de l'API
+else L'administrateur supprime une oeuvre
+Navigateur->Art: Validation de la suppression dans le composant
+Art->>Controller: ArtController: deleteArt
+Controller->Repository: ArtRepository: delete
+Repository-->Controller: Réponse du repository
+Controller-->Art: Réponse de l'API signalant la suppression de l'oeuvre
+Art-->Navigateur: Affichage du message signalant la suppression
+end
