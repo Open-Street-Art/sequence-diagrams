@@ -30,10 +30,10 @@ Controller-->-Contribution: Réponse de l'API signalant\n la création de la con
 end
 Contribution-->-Navigateur: Affichage du message corresponsant\n à la réponse de l'API
 else L'administrateur supprime une oeuvre
-Navigateur->Art: Validation de la suppression dans le composant
-Art->>Controller: ArtController: deleteArt
-Controller->Repository: ArtRepository: delete
-Repository-->Controller: Réponse du repository
-Controller-->Art: Réponse de l'API signalant la suppression de l'oeuvre
-Art-->Navigateur: Affichage du message signalant la suppression
+Navigateur->+Art: Clique sur "Supprimer l'oeuvre" dans le sous-Composant ArtActions
+Art->>+Controller: ArtController: deleteArt
+Controller->+Repository: ArtRepository: delete
+Repository-->-Controller: Réponse du repository
+Controller-->-Art: Réponse de l'API signalant la suppression de l'oeuvre
+Art-->-Navigateur: Affichage du message signalant la suppression
 end
