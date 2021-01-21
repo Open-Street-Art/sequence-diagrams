@@ -1,7 +1,7 @@
 Navigateur->+Home: Envoie la localisation pointé\net le niveau de zoom de la carte
-Home->+OpenStreetMap: Requête des données de cartes\naux coordonnées indiquées
+Home->>+OpenStreetMap: Requête des données de cartes\naux coordonnées indiquées
 OpenStreetMap-->-Home: Réponse de l'API des images et données de cartes
-Home->+Controller: ArtController : getArtsByLocalisation
+Home->>+Controller: ArtController : getArtsByLocalisation
 Controller->+Repository: ArtRepository : findByLocalisationAndPrecision
 Repository-->-Controller: Réponse de références du répository
 Controller-->-Home: Réponse de l'API indiquant les informations\ndes oeuvres présentes dans le rayon précisé
