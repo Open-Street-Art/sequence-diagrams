@@ -37,3 +37,51 @@ Repository-->-Controller: Réponse du repository
 Controller-->-Art: Réponse de l'API signalant la suppression de l'oeuvre
 Art-->-Navigateur: Affichage du message signalant la suppression
 end
+
+08 2
+
+Navigateur->+AdminMenu: L'administrateur clique sur une contribution
+AdminMenu->>+Controller: ContribController: getContribs
+Controller->+Repository: ContribRepository: findById
+Repository-->Controller: Retour des références du repository
+deactivate Repository
+Controller->+Art: Création d'un composant Art correspondant à la contribution
+deactivate Controller
+Art-->Navigateur: Affichage de la contribution
+deactivate Art
+alt Validation de la contribution
+Navigateur->Art: Clique sur l'option "Valider" dans ArtActionsContrib
+Art->>+Controller: ContribController: acceptContrib
+Controller->+Repository: ContribRepository: findById
+Repository-->Controller: Retour des références du repository
+deactivate Repository
+alt La contribution est une oeuvre ajoutée
+Controller->+Controller: Création d'une entité ArtEntity avec\n les données de la contribution
+deactivate Controller
+Controller->+Repository: ArtRepository: save
+Repository-->Controller: Réponse du repository
+deactivate Repository
+else La contribution est une oeuvre modifiée
+Controller->+Repository: Récupération de l'oeuvre à modifier
+Repository-->Controller: Réponse de la référence de l'entité
+deactivate Repository
+Controller->+Controller: Modification de l'entité avec\n les données de la contribution
+deactivate Controller
+Controller->+Repository: ArtRepository: save
+Repository-->Controller: Réponse du repository
+deactivate Repository
+Controller-->Art: Réponse confirmant la validation
+deactivate Controller
+Art-->AdminMenu: Redirection sur AdminMenu
+AdminMenu-->Navigateur: Notification de contribution validé
+else Refus de la contribution
+Navigateur->Art: Clique sur l'option "Refuser" dans ArtActionsContrib
+Art->>+Controller: ContribController: denyContrib
+Controller->+Repository: ContribRepository: delete
+Repository-->Controller: Réponse du repository
+deactivate Repository
+Controller-->Art: Réponse confirmant le refus
+deactivate Controller
+Art-->AdminMenu: Redirection sur AdminMenu
+AdminMenu-->Navigateur: Notification de contribution refusé
+deactivate AdminMenu
