@@ -3,30 +3,6 @@ Systeme->+Systeme: récuperation des informations à afficher
 deactivate Systeme
 Systeme-->Utilisateur: affichage du formulaire de connexion
 deactivate Systeme
-loop Tant que l'utilisateur souhaite réinitialiser son mot de passe
-Utilisateur->+Systeme: clique sur le bouton de récupération de mot de passe
-Systeme->+Systeme: récuperation des informations à afficher
-deactivate Systeme
-Systeme-->Utilisateur: affichage du formulaire de récuperation de mot de passe
-deactivate Systeme
-Utilisateur->+Utilisateur: complétion du formulaire
-deactivate Utilisateur
-Utilisateur->+Systeme: validation du formulaire
-alt Adresse mail correcte
-Systeme-->Utilisateur: envoie d'un mail de récuperation
-Utilisateur->+Utilisateur: ouverture du lien de récuperation
-Utilisateur->+Utilisateur: complétion du formulaire
-deactivate Utilisateur
-Utilisateur->Systeme: validation du formulaire
-deactivate Utilisateur
-Systeme->+Systeme: mise à jour du mot de passe dans la base de données
-deactivate Systeme
-Systeme-->Utilisateur: affichage du formulaire de connexion
-else Adresse mail incorrecte
-Systeme-->Utilisateur: réponse indiquant la raison de l'échec de la réinitialisation du mot de passe
-deactivate Systeme
-end
-end
 Utilisateur->+Utilisateur: complétion du formulaire
 deactivate Utilisateur
 Utilisateur->+Systeme: validation du formulaire
@@ -35,4 +11,3 @@ Systeme-->Utilisateur: authentification
 else Connexion échouée
 Systeme-->Utilisateur: réponse indiquant la raison\nde l'échec de l'authentification
 deactivate Systeme
-end
