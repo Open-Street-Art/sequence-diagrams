@@ -1,10 +1,17 @@
-Utilisateur->+Systeme: saisit un mot dans la barre\nde recherche des utilisateurs
-Systeme->+Systeme: récuperation d'une liste d'utilisateurs avec\nun préfixe commun avec ce mot
-deactivate Systeme
-Systeme-->Utilisateur: affichage du résultat de la recherche
-deactivate Systeme
-Utilisateur->+Systeme: clique sur le nom d'un utilisateur\nissu du résultat de la recherche
-Systeme->+Systeme: récuperation des données\nde l'utilisateur ciblé
-deactivate Systeme
-Systeme-->Utilisateur: affiche la page de l'utilisateur ciblé
-deactivate Systeme
+alt l'utilisateur consulte un profil via la recherche
+    Utilisateur->+Systeme: saisit un mot dans la barre\nde recherche des utilisateurs
+    Systeme->+Systeme: récuperation d'une liste d'utilisateurs avec\nun préfixe commun avec ce mot
+    deactivate Systeme
+    Systeme-->Utilisateur: affichage du résultat de la recherche
+    deactivate Systeme
+    Utilisateur->+Systeme: clique sur le nom d'un utilisateur\nissu du résultat de la recherche
+    Systeme->+Systeme: récuperation des données\nde l'utilisateur ciblé
+    deactivate Systeme
+    Systeme-->Utilisateur: affichage du profil de l'utilisateur ciblé
+    deactivate Systeme
+else l'utilisateur consulte un profil via une oeuvre
+    Utilisateur->+Systeme: clique sur le nom d'un artiste possédant\nun profil sur la page d'une oeuvre
+    Systeme->+Systeme: récuperation des données\nde l'artiste ciblé
+    deactivate Systeme
+    Systeme-->-Utilisateur: affichage du profil de l'artiste ciblé
+end
