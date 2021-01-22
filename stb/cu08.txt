@@ -1,13 +1,8 @@
-Administrateur->+Systeme: clique sur le bouton pour ouvrir\nle menu d'administration
-Systeme->+Systeme: récuperation des informations à afficher
-deactivate Systeme
-Systeme-->Administrateur: affichage du menu d'administration
-deactivate Systeme
-alt menu de validation des oeuvres
-    Administrateur->+Systeme: clique sur le bouton du menu de validation des oeuvres
-    Systeme->+Systeme: récuperation des oeuvres en attentes de validation
+alt l'administrateur souhaite évaluer les contributions
+    Administrateur->+Systeme: clique sur le bouton pour ouvrir le menu d'administration
+    Systeme->+Systeme: récuperation des informations à afficher
     deactivate Systeme
-    Systeme-->Administrateur: affichage des oeuvres en attentes de validation
+    Systeme-->Administrateur: affichage de la liste des contributions non évaluées
     deactivate Systeme
     alt accepte une oeuvre
         Administrateur->+Systeme: clique sur le bouton de validation d'une oeuvre
@@ -22,15 +17,31 @@ alt menu de validation des oeuvres
         Systeme-->Administrateur: réponse indiquant le refus de l'oeuvre
         deactivate Systeme
     end
-else menu de modification des oeuvres
-    Administrateur->+Systeme: clique sur le bouton pour ouvrir\nle menu de modification des oeuvres
+else l'administrateur souhaite modifier une oeuvre
+    Administrateur->+Systeme: clique sur le bouton modifier l'oeuvre sur sa fiche
+    Systeme-->-Administrateur: affichage du formulaire de modification de l'oeuvre
+    Administrateur->+Administrateur: complétion du formulaire
+    deactivate Administrateur
+    Administrateur->+Systeme: validation du formulaire
+    alt données correctes
+        Systeme-->Administrateur: affichage d'un message indiquant la modification de l'oeuvre
+    else données incorrectes
+        Systeme-->-Administrateur: affiche d'un message indiquant que les données sont incorrectes
+    end
+else l'administrateur souhaite supprimer une oeuvre
+    Administrateur->+Systeme: clique sur le bouton supprimer l'oeuvre sur sa fiche
+    Systeme-->-Administrateur: affichage d'un message indiquant la suppression de l'oeuvre
+else l'administrateur souhaite ajouter une oeuvre
+    Administrateur->+Systeme: clique sur le bouton de création d'oeuvre dans le menu
     Systeme->+Systeme: récuperation des informations à afficher
     deactivate Systeme
-    Systeme-->Administrateur: affichage de la liste des oeuvres de la base de données
-    deactivate Systeme
-    Administrateur->+Systeme: opération CRUD sur une oeuvre
-    Systeme->+Systeme: modification des informations de l'oeuvre en base de données
-    deactivate Systeme
-    Systeme-->Administrateur: réponse du Systeme concernant les modifications apportées
-    deactivate Systeme
+    Systeme-->-Administrateur: affichage du formulaire de création de l'oeuvre
+    Administrateur->+Administrateur: complétion du fornulaire
+    deactivate Administrateur
+    Administrateur->+Systeme: validation du formulaire
+    alt données correctes
+        Systeme-->Administrateur: affichage d'un message indiquant la création de l'oeuvre
+    else données incorrectes
+        Systeme-->-Administrateur: affiche d'un message indiquant que les données sont incorrectes
+    end
 end
