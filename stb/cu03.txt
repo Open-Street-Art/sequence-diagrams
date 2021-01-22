@@ -1,11 +1,5 @@
-alt l'utilisateur a cliquer sur une oeuvre
-Utilisateur->+Systeme: clique sur une oeuvre
+Utilisateur->+Systeme: clique sur une fiche de l'oeuvre
 Systeme->+Systeme: récupération des données de l'oeuvre
 deactivate Systeme
 Systeme-->>Utilisateur: affichage des détails de l'oeuvre
 deactivate Systeme
-else l'utilisateur a saisi une oeuvre dans la recherche
-Utilisateur->+Systeme: envoie de la saisie
-Systeme->+Systeme: récupération des données de l'oeuvre correspondants à la saisie
-deactivate Systeme
-Systeme-->>Utilisateur: affichage des détails de l'oeuvre
