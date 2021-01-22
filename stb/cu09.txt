@@ -1,6 +1,6 @@
-Ouverture d'un itinéraire :
-Utilsateur->+Systeme: Clique sur le lien d'itinéraire\n d'une oeuvre
-Systeme-->Utilsateur: Récupération des points GPS \nde l'itinéraire
+Utilisateur->+Systeme: Clique sur le lien d'itinéraire\n d'une oeuvre
+Systeme->+Systeme: Récupération des points GPS \nde l'itinéraire
 deactivate Systeme
-Utilsateur->+Utilsateur: Ouverture de l'itinéraire dans\n une application externe
-deactivate Utilsateur
+Systeme-->-Utilisateur: Création d'une URL d'itinéraire\nvers la position de l'oeuvre
+Utilisateur->+Utilisateur: Ouverture de l'itinéraire dans\n une application externe
+deactivate Utilisateur
